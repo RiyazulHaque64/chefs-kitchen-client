@@ -3,7 +3,6 @@ import ChefDetailsBanner from "../components/ChefDetailsBanner";
 
 const ChefRecepes = () => {
   const chefRecepes = useLoaderData();
-  console.log(chefRecepes);
   return (
     <div>
       <ChefDetailsBanner chefRecepes={chefRecepes} />
