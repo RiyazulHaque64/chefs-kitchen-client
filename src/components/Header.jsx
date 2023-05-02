@@ -12,7 +12,7 @@ const Header = () => {
     logOut();
   };
   return (
-    <div className="w-full mx-auto py-5">
+    <div className="w-full mx-auto py-10">
       <div className="relative flex items-center justify-between">
         {/* logo section */}
         <Link to="/" className="inline-flex items-center">
