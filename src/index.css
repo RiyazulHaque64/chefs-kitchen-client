@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+p {
+  @apply text-gray-600;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply text-gray-700 font-medium;
+}
+.active {
+  @apply text-lime-700 hover:text-lime-400 font-medium duration-200 transition-colors tracking-wide;
+}
+.default {
+  @apply text-gray-700 hover:text-lime-400 font-medium duration-200 transition-colors tracking-wide;
+}
