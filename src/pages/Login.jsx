@@ -29,7 +29,7 @@ const Login = () => {
           Login
         </h2>
       </div>
-      <div className="lg:grid lg:grid-cols-8 items-center justify-between gap-20">
+      <div className="flex flex-col-reverse lg:grid lg:grid-cols-8 items-center justify-between lg:gap-20">
         <div className="col-span-4 flex flex-col gap-4">
           <form
             onSubmit={handleLogin}
@@ -80,7 +80,7 @@ const Login = () => {
             <span>Sign in with Github</span>
           </button>
         </div>
-        <div className="col-span-4 p-4 lg:p-10 mb-8 lg:mb-0">
+        <div className="col-span-4 lg:p-10">
           <img src={loginIllustration} alt="Contact Illustration" />
         </div>
       </div>

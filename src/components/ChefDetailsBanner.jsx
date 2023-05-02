@@ -24,12 +24,12 @@ const ChefDetailsBanner = ({ chefRecepes }) => {
             <span className="font-bold">Experience:</span> {experience} Years in
             this field
           </p>
-          <div className="flex items-center justify-between w-1/2 mb-10">
+          <div className="flex items-center justify-between lg:w-1/2 mb-10">
             <p>
               <span className="font-bold">Number of recipies: </span>
               {recipies.length}
             </p>
-            <p className="flex items-center justify-end gap-2">
+            <p className="flex items-center lg:justify-end gap-2">
               <BiLike />
               <span>{likes}</span>
             </p>
@@ -37,7 +37,7 @@ const ChefDetailsBanner = ({ chefRecepes }) => {
         </div>
         <div className="col-span-4 flex justify-end">
           <img
-            className="w-auto h-[600px] rounded-r-lg"
+            className="w-auto lg:h-[600px] rounded-t-lg lg:rounded-r-lg"
             src={chef_image}
             alt="Air Conditioner Illustration"
           />
@@ -49,7 +49,7 @@ const ChefDetailsBanner = ({ chefRecepes }) => {
             {name}'s Recipes
           </h2>
         </div>
-        <div className="grid grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {recipies.map((recipe) => (
             <Recipe key={recipe.recipe_id} recipe={recipe} />
           ))}

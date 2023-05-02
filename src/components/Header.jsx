@@ -61,10 +61,6 @@ const Header = () => {
                 </NavLink>
               </li>
             )}
-            {/* <li className="bg-blue-600 text-white text-sm py-3 px-5 rounded shadow-lg flex items-center gap-2">
-              <FaPhoneAlt />
-              <span>{user?.displayName}</span>
-            </li> */}
             <li>
               <img className="w-10" src={user?.photoURL} alt="" />
             </li>
@@ -89,7 +85,7 @@ const Header = () => {
                 <div className="flex items-center justify-between mb-4">
                   <div>
                     <Link to="/" className="inline-flex items-center">
-                      <TbToolsKitchen2 className="h-6 w-6 text-blue-600" />
+                      <TbToolsKitchen2 className="h-6 w-6 text-lime-600" />
                       <span className="ml-2 text-xl font-bold text-gray-800">
                         Chefs Kitchen
                       </span>
