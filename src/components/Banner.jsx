@@ -1,7 +1,7 @@
 import bannerImg from "../assets/image/banner_image.png";
 const Banner = () => {
   return (
-    <div className="flex lg:grid flex-col-reverse lg:grid-cols-8 items-center justify-between gap-8 lg:gap-14 py-8 lg:py-16">
+    <div className="flex lg:grid flex-col-reverse lg:grid-cols-8 items-center justify-between gap-8 lg:gap-14 py-8 lg:py-16 mb-10">
       <div className="col-span-4">
         <h2 className="text-3xl lg:text-5xl mb-5">
           Food is not just eating <br />

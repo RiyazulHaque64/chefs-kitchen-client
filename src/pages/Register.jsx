@@ -77,12 +77,12 @@ const Register = () => {
           {error && (
             <div className="text-xl text-red-600 bg-red-50 border border-red-200 flex items-center justify-between shadow mb-6 p-6 rounded-lg">
               <div className="flex items-center justify-center gap-2">
-                <BiError />
+                <BiError className="w-14 h-14 md:w-6 md:h-6 lg:w-6 lg:h-6" />
                 <span>{error}</span>
               </div>
               <HiOutlineXMark
                 onClick={() => setError("")}
-                className="cursor-pointer"
+                className="w-14 h-14 md:w-6 md:h-6 lg:w-6 lg:h-6 cursor-pointer"
               />
             </div>
           )}

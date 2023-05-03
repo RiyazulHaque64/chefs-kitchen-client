@@ -85,7 +85,11 @@ const Header = () => {
             <HiBars3BottomRight className="w-5 text-gray-600" />
           </button>
           {user && (
-            <img className="w-10 rounded-full" src={user?.photoURL} alt="" />
+            <img
+              className="w-10 rounded-full ml-2"
+              src={user?.photoURL}
+              alt=""
+            />
           )}
 
           {isMenuOpen && (
