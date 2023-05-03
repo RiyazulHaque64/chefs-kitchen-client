@@ -10,9 +10,10 @@ const Header = () => {
   const { user, logOut } = useContext(AuthContext);
   const handleLogout = () => {
     logOut();
+    setIsMenuOpen(false);
   };
   return (
-    <div className="w-full mx-auto py-10">
+    <div className="w-full mx-auto py-6 md:py-8 lg:py-10">
       <div className="relative flex items-center justify-between">
         {/* logo section */}
         <Link to="/" className="inline-flex items-center">
@@ -42,13 +43,22 @@ const Header = () => {
               </NavLink>
             </li>
             {user ? (
-              <li
-                onClick={handleLogout}
-                title="Logout"
-                className="text-gray-700 hover:text-lime-600 font-medium duration-200 transition-colors cursor-pointer"
-              >
-                <FiLogOut />
-              </li>
+              <>
+                <li
+                  onClick={handleLogout}
+                  title="Logout"
+                  className="text-gray-700 hover:text-lime-600 font-medium duration-200 transition-colors cursor-pointer"
+                >
+                  <FiLogOut />
+                </li>
+                <li>
+                  <img
+                    className="w-10 rounded-full"
+                    src={user?.photoURL}
+                    alt=""
+                  />
+                </li>
+              </>
             ) : (
               <li>
                 <NavLink
@@ -61,14 +71,11 @@ const Header = () => {
                 </NavLink>
               </li>
             )}
-            <li>
-              <img className="w-10 rounded-full" src={user?.photoURL} alt="" />
-            </li>
           </ul>
         </nav>
 
         {/* responsive navbar section */}
-        <div className="lg:hidden">
+        <div className="flex items-center lg:hidden">
           {/* dropdown open button */}
           <button
             aria-level="Open Menu"
@@ -77,6 +84,9 @@ const Header = () => {
           >
             <HiBars3BottomRight className="w-5 text-gray-600" />
           </button>
+          {user && (
+            <img className="w-10 rounded-full" src={user?.photoURL} alt="" />
+          )}
 
           {isMenuOpen && (
             <div className="absolute -top-5 left-0 w-full z-10">
@@ -127,17 +137,30 @@ const Header = () => {
                         Blog
                       </NavLink>
                     </li>
-                    <li>
-                      <NavLink
-                        onClick={() => setIsMenuOpen(false)}
-                        to="/login"
-                        className={({ isActive }) =>
-                          isActive ? "active" : "default"
-                        }
+                    {user ? (
+                      <li
+                        onClick={handleLogout}
+                        title="Logout"
+                        className="text-gray-700 hover:text-lime-600 font-medium duration-200 transition-colors cursor-pointer"
                       >
-                        Login
-                      </NavLink>
-                    </li>
+                        <span className="flex items-center gap-2">
+                          <span>Logout</span>
+                          <FiLogOut />
+                        </span>
+                      </li>
+                    ) : (
+                      <li>
+                        <NavLink
+                          onClick={() => setIsMenuOpen(false)}
+                          to="/login"
+                          className={({ isActive }) =>
+                            isActive ? "active" : "default"
+                          }
+                        >
+                          Login
+                        </NavLink>
+                      </li>
+                    )}
                   </ul>
                 </nav>
               </div>

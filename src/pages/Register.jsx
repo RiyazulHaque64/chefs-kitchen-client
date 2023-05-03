@@ -3,6 +3,7 @@ import registerIllustration from "../assets/image/register_illustration.png";
 import googleIcon from "../assets/image/google_icon.png";
 import githubIcon from "../assets/image/github_icon.png";
 import { BiError } from "react-icons/bi";
+import { HiOutlineXMark } from "react-icons/hi2";
 import { useContext, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 
@@ -60,6 +61,7 @@ const Register = () => {
       setError("Your password must have at least 6 character!!!");
     }
   };
+
   return (
     <div className="py-10 mb-20">
       <div className="text-center mb-16">
@@ -72,10 +74,18 @@ const Register = () => {
           <img src={registerIllustration} alt="Contact Illustration" />
         </div>
         <div className="col-span-4 flex flex-col gap-4">
-          <div className="text-xl text-red-600 bg-red-50 border border-red-200 shadow mb-6 p-6 flex items-center justify-center gap-2 rounded-lg">
-            <BiError />
-            <span>{error}</span>
-          </div>
+          {error && (
+            <div className="text-xl text-red-600 bg-red-50 border border-red-200 flex items-center justify-between shadow mb-6 p-6 rounded-lg">
+              <div className="flex items-center justify-center gap-2">
+                <BiError />
+                <span>{error}</span>
+              </div>
+              <HiOutlineXMark
+                onClick={() => setError("")}
+                className="cursor-pointer"
+              />
+            </div>
+          )}
           <form
             onSubmit={handleCreateUser}
             className="flex flex-col gap-4"

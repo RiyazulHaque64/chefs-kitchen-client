@@ -2,6 +2,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginIllustration from "../assets/image/Mobile-login-Cristina.jpg";
 import googleIcon from "../assets/image/google_icon.png";
 import githubIcon from "../assets/image/github_icon.png";
+import { BiError } from "react-icons/bi";
+import { HiOutlineXMark } from "react-icons/hi2";
 import { useContext, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 
@@ -55,6 +57,18 @@ const Login = () => {
       </div>
       <div className="flex flex-col-reverse lg:grid lg:grid-cols-8 items-center justify-between lg:gap-20">
         <div className="col-span-4 flex flex-col gap-4">
+          {error && (
+            <div className="text-xl text-red-600 bg-red-50 border border-red-200 flex items-center justify-between shadow mb-6 p-6 rounded-lg">
+              <div className="flex items-center justify-center gap-2">
+                <BiError />
+                <span>{error}</span>
+              </div>
+              <HiOutlineXMark
+                onClick={() => setError("")}
+                className="cursor-pointer"
+              />
+            </div>
+          )}
           <form
             onSubmit={handleLogin}
             className="flex flex-col gap-4"
@@ -103,7 +117,6 @@ const Login = () => {
             <img className="w-6" src={githubIcon} alt="Github Icon" />
             <span>Sign in with Github</span>
           </button>
-          <p className="text-xl text-red-500">{error}</p>
         </div>
         <div className="col-span-4 lg:p-10">
           <img src={loginIllustration} alt="Contact Illustration" />
