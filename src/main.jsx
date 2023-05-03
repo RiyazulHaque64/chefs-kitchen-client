@@ -9,11 +9,14 @@ import Register from "./pages/Register";
 import AuthProvider from "./providers/AuthProvider";
 import ChefRecepes from "./pages/ChefRecepes";
 import PrivateRoute from "./routes/PrivateRoute";
+import ErrorPage from "./components/ErrorPage";
+import Blogs from "./pages/Blogs";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -42,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/blog",
+        element: <Blogs />,
       },
     ],
   },

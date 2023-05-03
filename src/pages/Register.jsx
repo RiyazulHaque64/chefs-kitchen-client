@@ -132,7 +132,9 @@ const Register = () => {
             </Link>
           </p>
           <div className="text-center">
-            <span>or</span>
+            <h1 className="mx-auto text-center relative before:content-[''] before:h-[1px] before:w-1/2 before:bg-gray-300 before:absolute before:top-1/2 before:right-0 before:-z-10 after:content-[''] after:h-[1px] after:w-1/2 after:bg-gray-300 after:absolute after:top-1/2 after:left-0 after:-z-10">
+              <span className="bg-white px-2 text-xl">or</span>
+            </h1>
           </div>
           <button
             onClick={handleGoogleSignin}
