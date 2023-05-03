@@ -49,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: "/blog",
         element: <Blogs />,
+        loader: () =>
+          fetch(
+            " https://chefs-kitchen-server-riyazulhaque64-gmailcom.vercel.app/blogs"
+          ),
       },
     ],
   },
