@@ -1,12 +1,41 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import registerIllustration from "../assets/image/register_illustration.png";
 import googleIcon from "../assets/image/google_icon.png";
 import githubIcon from "../assets/image/github_icon.png";
-import { useContext } from "react";
+import { BiError } from "react-icons/bi";
+import { useContext, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 
 const Register = () => {
-  const { createUser, updateUser, setLoading } = useContext(AuthContext);
+  const [error, setError] = useState("");
+  const {
+    createUser,
+    updateUser,
+    setUserProfile,
+    signinWithGoogle,
+    signinWithGithub,
+  } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const handleGoogleSignin = () => {
+    signinWithGoogle()
+      .then(() => {
+        setUserProfile(false);
+        navigate("/", { replace: true });
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  };
+  const handleGithubSignin = () => {
+    signinWithGithub()
+      .then(() => {
+        setUserProfile(false);
+        navigate("/", { replace: true });
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  };
   const handleCreateUser = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -15,15 +44,20 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     if (email && password.length >= 6) {
-      createUser(email, password).then((res) => {
-        const user = res.user;
-        updateUser(user, { userName, photoUrl }).then(() => {
-          setLoading(true);
+      createUser(email, password)
+        .then((res) => {
+          const user = res.user;
+          updateUser(user, { userName, photoUrl }).then(() => {
+            setUserProfile(false);
+          });
+          navigate("/");
+        })
+        .catch((error) => {
+          setError(error.message);
         });
-      });
       form.reset();
     } else {
-      console.log(userName, photoUrl);
+      setError("Your password must have at least 6 character!!!");
     }
   };
   return (
@@ -38,6 +72,10 @@ const Register = () => {
           <img src={registerIllustration} alt="Contact Illustration" />
         </div>
         <div className="col-span-4 flex flex-col gap-4">
+          <div className="text-xl text-red-600 bg-red-50 border border-red-200 shadow mb-6 p-6 flex items-center justify-center gap-2 rounded-lg">
+            <BiError />
+            <span>{error}</span>
+          </div>
           <form
             onSubmit={handleCreateUser}
             className="flex flex-col gap-4"
@@ -86,11 +124,17 @@ const Register = () => {
           <div className="text-center">
             <span>or</span>
           </div>
-          <button className="border flex items-center justify-center gap-4 py-3 rounded-full">
+          <button
+            onClick={handleGoogleSignin}
+            className="border flex items-center justify-center gap-4 py-3 rounded-full"
+          >
             <img className="w-6" src={googleIcon} alt="Google Icon" />
             <span>Sign in with Google</span>
           </button>
-          <button className="border flex items-center justify-center gap-4 py-3 rounded-full">
+          <button
+            onClick={handleGithubSignin}
+            className="border flex items-center justify-center gap-4 py-3 rounded-full"
+          >
             <img className="w-6" src={githubIcon} alt="Github Icon" />
             <span>Sign in with Github</span>
           </button>

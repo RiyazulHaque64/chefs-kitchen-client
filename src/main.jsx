@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import AuthProvider from "./providers/AuthProvider";
 import ChefRecepes from "./pages/ChefRecepes";
+import PrivateRoute from "./routes/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +25,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/chef/:id",
-        element: <ChefRecepes />,
+        element: (
+          <PrivateRoute>
+            <ChefRecepes />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(
             `https://chefs-kitchen-server-riyazulhaque64-gmailcom.vercel.app/chef/${params.id}`

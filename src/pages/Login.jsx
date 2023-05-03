@@ -1,26 +1,50 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginIllustration from "../assets/image/Mobile-login-Cristina.jpg";
 import googleIcon from "../assets/image/google_icon.png";
 import githubIcon from "../assets/image/github_icon.png";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 
 const Login = () => {
-  const { signinWithGoogle, signinWithGithub, loginUser } =
+  const [error, setError] = useState("");
+  const { signinWithGoogle, signinWithGithub, loginUser, setUserProfile } =
     useContext(AuthContext);
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const navigate = useNavigate();
   const handleGoogleSignin = () => {
-    signinWithGoogle();
+    signinWithGoogle()
+      .then(() => {
+        setUserProfile(false);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
   };
   const handleGithubSignin = () => {
-    signinWithGithub();
+    signinWithGithub()
+      .then(() => {
+        setUserProfile(false);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
   };
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    loginUser(email, password);
-    form.reset();
+    loginUser(email, password)
+      .then(() => {
+        form.reset();
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
   };
   return (
     <div className="py-10 mb-20">
@@ -79,6 +103,7 @@ const Login = () => {
             <img className="w-6" src={githubIcon} alt="Github Icon" />
             <span>Sign in with Github</span>
           </button>
+          <p className="text-xl text-red-500">{error}</p>
         </div>
         <div className="col-span-4 lg:p-10">
           <img src={loginIllustration} alt="Contact Illustration" />

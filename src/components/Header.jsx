@@ -62,7 +62,7 @@ const Header = () => {
               </li>
             )}
             <li>
-              <img className="w-10" src={user?.photoURL} alt="" />
+              <img className="w-10 rounded-full" src={user?.photoURL} alt="" />
             </li>
           </ul>
         </nav>
@@ -107,6 +107,7 @@ const Header = () => {
                   <ul className="space-y-3">
                     <li>
                       <NavLink
+                        onClick={() => setIsMenuOpen(false)}
                         to="/"
                         className={({ isActive }) =>
                           isActive ? "active" : "default"
@@ -117,6 +118,7 @@ const Header = () => {
                     </li>
                     <li>
                       <NavLink
+                        onClick={() => setIsMenuOpen(false)}
                         to="/blog"
                         className={({ isActive }) =>
                           isActive ? "active" : "default"
@@ -127,6 +129,7 @@ const Header = () => {
                     </li>
                     <li>
                       <NavLink
+                        onClick={() => setIsMenuOpen(false)}
                         to="/login"
                         className={({ isActive }) =>
                           isActive ? "active" : "default"

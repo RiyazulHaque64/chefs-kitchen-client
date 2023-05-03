@@ -5,9 +5,13 @@ import { Link } from "react-router-dom";
 const Chef = ({ data }) => {
   const { id, chef_image, name, experience, recipies, likes } = data;
   return (
-    <div className="card w-96 bg-base-100 shadow-xl">
+    <div className="card bg-base-100 shadow-xl">
       <figure>
-        <img className="h-96 w-full" src={chef_image} alt="Chef Picture" />
+        <img
+          className="h-96 lg:h-[480px] w-full"
+          src={chef_image}
+          alt="Chef Picture"
+        />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{name}</h2>
