@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import Banner from "../components/Banner";
 import Chef from "../components/Chef";
 import HireChef from "../components/HireChef";
+import Stat from "../components/Stat";
 
 const Home = () => {
   const chefData = useLoaderData();
@@ -19,6 +20,9 @@ const Home = () => {
             <Chef key={chef.id} data={chef} />
           ))}
         </div>
+      </div>
+      <div className="mt-40">
+        <Stat />
       </div>
       <div className="py-10 my-20">
         <div className="text-center mb-16">

@@ -39,7 +39,7 @@ const ChefDetailsBanner = ({ chefRecepes }) => {
           </div>
           <div className="col-span-4 flex justify-end">
             <img
-              className="w-auto lg:h-[600px] rounded-t-lg lg:rounded-r-lg"
+              className="w-auto lg:h-[500px] 2xl:h-[600px] rounded-t-lg lg:rounded-r-lg"
               src={chef_image}
               alt="Air Conditioner Illustration"
             />

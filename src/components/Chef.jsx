@@ -8,7 +8,7 @@ const Chef = ({ data }) => {
     <div className="card bg-base-100 shadow-xl">
       <figure>
         <img
-          className="h-96 lg:h-[480px] w-full"
+          className="h-96 2xl:h-[480px] w-full"
           src={chef_image}
           alt="Chef Picture"
         />

@@ -19,3 +19,15 @@ h6 {
 .default {
   @apply text-gray-700 hover:text-lime-400 font-medium duration-200 transition-colors tracking-wide;
 }
+.bg-img{
+  background-image: url("./assets/image/blogs_banner.jpg"), linear-gradient(90deg, rgba(163, 230, 53, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+  background-size: cover;
+  object-fit: cover;
+  background-blend-mode: overlay;
+}
+.stat-bg{
+  background-image: url("./assets/image/foodBanner.jpg"), linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+  background-size: cover;
+  object-fit: cover;
+  background-blend-mode: overlay;
+}

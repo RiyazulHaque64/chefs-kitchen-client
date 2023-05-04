@@ -4,10 +4,12 @@ import googleIcon from "../assets/image/google_icon.png";
 import githubIcon from "../assets/image/github_icon.png";
 import { BiError } from "react-icons/bi";
 import { HiOutlineXMark } from "react-icons/hi2";
+import { BsEyeFill } from "react-icons/bs";
 import { useContext, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 
 const Register = () => {
+  const [showPassword, setShowPassword] =useState(false);
   const [error, setError] = useState("");
   const {
     createUser,
@@ -105,13 +107,16 @@ const Register = () => {
               placeholder="Type your email"
               required
             />
-            <input
-              className="border border-gray-500 focus:outline-lime-600 rounded-full px-4 py-2 shadow"
-              type="password"
-              name="password"
-              placeholder="Type your password"
-              required
-            />
+            <div className="relative">
+              <input
+                className="border border-gray-500 focus:outline-lime-600 rounded-full w-full px-4 py-2 shadow"
+                type={showPassword ? "text" : "password"}
+                name="password"
+                placeholder="Type your password"
+                required
+              />
+              <BsEyeFill onClick={() => setShowPassword(!showPassword)} className={`absolute top-1/4 right-4 cursor-pointer w-6 h-6 ${showPassword ? "text-gray-800" : "text-gray-400"}`} title={showPassword ? "Hide Password" : "Show Password"}/>
+            </div>
             <input
               className="border border-gray-500 focus:outline-lime-600 rounded-full px-4 py-2 shadow"
               type="url"
