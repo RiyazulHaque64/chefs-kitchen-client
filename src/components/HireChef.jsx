@@ -1,5 +1,4 @@
 import chefIllustration from "../assets/image/chef_illustration.png";
-import { BsArrowRightShort } from "react-icons/bs";
 
 const HireChef = () => {
   return (
@@ -35,7 +34,7 @@ const HireChef = () => {
           id=""
           cols="30"
           rows="10"
-          placeholder="Message"
+          placeholder="Description"
         ></textarea>
         <input
           className="border btn-bg text-white duration-200 bg-lime-500 hover:bg-lime-600 text-xl font-semibold rounded-full px-4 py-2 cursor-pointer"

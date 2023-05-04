@@ -88,7 +88,12 @@ const PdfFile = () => {
           <Text style={styles.text}>
             Ans. First of all we install the prop-types library, run the
             command: npm i prop-types. Then we import it in the component from
-            the "prop-types" module.
+            the 'prop-types' module. For validation, 1. PropTypes.any : The prop
+            can be of any data type. 2. PropTypes.bool : The prop should be a
+            Boolean. 3. PropTypes.number : The prop should be a number. 4.
+            PropTypes.string : The prop should be a string. 5. PropTypes.func :
+            The prop should be a function. 6. PropTypes.array : The prop should
+            be an array.
           </Text>
         </View>
         <View>
@@ -114,7 +119,8 @@ const PdfFile = () => {
             Ans. Custom Hook is a JavaScript function which we create by
             ourselves, when we want to share logic between other JavaScript
             functions. It allows us to reuse some piece of code in several parts
-            of our app.
+            of our app. We use custom hook, because, it can be reused easily,
+            which makes the code cleaner and reduces the time to write the code.
           </Text>
         </View>
       </Page>
