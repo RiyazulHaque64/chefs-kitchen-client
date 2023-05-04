@@ -53,9 +53,10 @@ const Header = () => {
                 </li>
                 <li>
                   <img
+                    title={user?.displayName}
                     className="w-10 rounded-full"
                     src={user?.photoURL}
-                    alt=""
+                    alt="Profile Picture"
                   />
                 </li>
               </>
