@@ -13,7 +13,7 @@ const Header = () => {
     setIsMenuOpen(false);
   };
   return (
-    <div className="w-full mx-auto py-6 md:py-8 lg:py-10">
+    <div className={`w-full mx-auto py-6 md:py-8 lg:py-10`}>
       <div className="relative flex items-center justify-between">
         {/* logo section */}
         <Link to="/" className="inline-flex items-center">

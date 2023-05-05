@@ -1,12 +1,15 @@
 /* eslint-disable */
-import { Rate } from "antd";
-import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Rate } from "antd";
+import { useState } from "react";
 
-const Recipe = ({ recipe }) => {
+const Recipe2 = ({ recipe, recipeImg }) => {
   const [favourite, setFavourite] = useState(false);
-  const { recipe_name, ingredients, cooking_method, rating } = recipe;
+  const { recipe_name, recipe_image, ingredients, cooking_method, rating } =
+    recipe;
+  const [cookingMethod, setCookingMethod] = useState(true);
+
   const handleFavourite = () => {
     setFavourite(true);
     toast.success("Added to favourites list", {
@@ -15,37 +18,30 @@ const Recipe = ({ recipe }) => {
     });
   };
   return (
-    <div className="mb-10 text-center flex flex-col shadow p-6">
-      <h1 className="text-3xl text-lime-600 font-bold mb-6">{recipe_name}</h1>
-      <div className="flex-grow">
-        <table className="w-full">
-          {/* head */}
-          <thead className="bg-lime-50 border-2 border-lime-200">
-            <tr>
-              <th className="p-3 text-sm font-semibold tracking-wide">
-                Ingredients
-              </th>
-              <th className="p-3 text-sm font-semibold tracking-wide">
-                Cooking Method
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* row 1 */}
-            <tr>
-              <td className="p-3 text-sm text-gray-700 text-start border border-lime-200">
-                {ingredients.map((ingredient, index) => (
-                  <span key={index}>{ingredient}, </span>
-                ))}
-              </td>
-              <td className="p-3 text-sm text-gray-700 text-start border border-lime-200">
-                {cooking_method}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div className="flex justify-between items-center mt-4">
+    <div className="border border-gray-300 shadow-lg flex flex-col">
+      <img src={recipe_image} alt="Recipe Image" />
+      <h2 className="text-xl font-bold mb-2 pl-4 pr-4">{recipe_name}</h2>
+      <p className="text-sm mb-2 pl-4 pr-4">
+        <span className="font-semibold">Ingredients: </span>
+        {ingredients.map((ingredient, index) => (
+          <span key={index}>{ingredient}, </span>
+        ))}
+      </p>
+      <p className="text-sm pl-4 pr-4 flex-grow">
+        <span className="font-semibold">Cooking Method: </span>
+        {cookingMethod ? (
+          <span>{cooking_method.substring(0, 100)}</span>
+        ) : (
+          <span>{cooking_method}</span>
+        )}
+        <span
+          className="text-lime-600 hover:underline ml-1 cursor-pointer"
+          onClick={() => setCookingMethod(!cookingMethod)}
+        >
+          {cookingMethod ? "Read More" : "See Less"}
+        </span>
+      </p>
+      <div className="flex justify-between items-center mt-6 pl-4 pr-4 pb-6">
         <Rate defaultValue={rating} />
         <button
           onClick={handleFavourite}
@@ -60,4 +56,4 @@ const Recipe = ({ recipe }) => {
   );
 };
 
-export default Recipe;
+export default Recipe2;
